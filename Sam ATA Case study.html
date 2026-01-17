@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Lab for Blind Students with AT – Field Case Study Form</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 12px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #256428;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Computer Lab for Blind Students with Assistive Technology</h1>
+<p>Quick Field Case Study Form (8–10 minutes)</p>
+
+<form id="atForm">
+
+<label>Institution / School Name *</label>
+<input type="text" required>
+
+<label>City & State *</label>
+<input type="text" required>
+
+<label>Type of Institution *</label>
+<select required>
+  <option value="">Select</option>
+  <option>Special School</option>
+  <option>College / University</option>
+  <option>Skill / Vocational Centre</option>
+</select>
+
+<label>Primary Disability Group Served *</label>
+<select required>
+  <option value="">Select</option>
+  <option>Visual Impairment (Blind / Low Vision)</option>
+  <option>Multiple Disabilities</option>
+</select>
+
+<label>Approx. number of students using the Computer Lab</label>
+<input type="number">
+
+<label>One major challenge before the Computer Lab was set up *</label>
+<select required>
+  <option value="">Select</option>
+  <option>No access to assistive technology</option>
+  <option>Difficulty using computers independently</option>
+  <option>Dependence on others for digital tasks</option>
+  <option>Poor learning outcomes</option>
+  <option>Low confidence</option>
+</select>
+
+<label>What changed after the Computer Lab with AT was introduced? *</label>
+<textarea rows="3" required></textarea>
+
+<label>Main assistive tools being used</label>
+<textarea rows="2" placeholder="Screen readers, Braille displays, accessible software, scanners..."></textarea>
+
+<label>Computer Lab usage frequency *</label>
+<select required>
+  <option value="">Select</option>
+  <option>Daily</option>
+  <option>Weekly</option>
+  <option>Occasionally</option>
+</select>
+
+<label>Student background & visual disability (no names) *</label>
+<textarea rows="3" required></textarea>
+
+<label>How did the Computer Lab with AT help this student? *</label>
+<textarea rows="3" required></textarea>
+
+<label>Outcome achieved *</label>
+<select required>
+  <option value="">Select</option>
+  <option>Improved learning</option>
+  <option>Better digital skills</option>
+  <option>Increased independence</option>
+  <option>Exam success</option>
+  <option>College / job readiness</option>
+</select>
+
+<label>Upload photos of the Computer Lab in use (2–3 preferred) *</label>
+<input type="file" accept="image/*" multiple required>
+
+<label>Upload short video (optional)</label>
+<input type="file" accept="video/*">
+
+<label>Consent to use content for reports & CSR documentation *</label>
+<select required>
+  <option value="">Select</option>
+  <option>Yes</option>
+  <option>Yes, without showing faces</option>
+</select>
+
+<label>Your Name & Role *</label>
+<input type="text" required>
+
+<label>Contact Number</label>
+<input type="tel">
+
+<button type="button" onclick="saveForm()">Save & Download</button>
+
+</form>
+</div>
+
+<script>
+function saveForm() {
+  const form = document.getElementById('atForm');
+  const data = new FormData(form);
+  let obj = {};
+  data.forEach((value, key) => obj[key] = value);
+
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "computer_lab_for_blind_with_AT_case_study.json";
+  a.click();
+}
+</script>
+
+</body>
+</html>
